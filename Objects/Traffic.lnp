@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\Trffic-c.obj",
+".\Objects\Traffic-asm.obj" 
+TO ".\Objects\Traffic" 
+PRINT(".\Listings\Traffic.m51")

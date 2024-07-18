@@ -1,0 +1,73 @@
+C51 COMPILER V9.60.7.0   TRFFIC_C                                                          07/18/2024 17:25:41 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TRFFIC_C
+OBJECT MODULE PLACED IN .\Objects\Trffic-c.obj
+COMPILER INVOKED BY: D:\Systems Installs\C51\BIN\C51.EXE Trffic-c.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\Trffic-c.lst) TABS(2) OBJECT(.\Objects\Trffic-c.obj)
+
+line level    source
+
+   1          #include <REG51.H>
+   2          
+   3          // Define pin connections for traffic lights
+   4          sbit RED = P1^0;
+   5          sbit YELLOW = P1^1;
+   6          sbit GREEN = P1^2;
+   7          
+   8          // Function prototypes
+   9          void delay_ms(unsigned int ms);
+  10          void initialize();
+  11          
+  12          int main() {
+  13   1          initialize();
+  14   1          
+  15   1          while(1) {
+  16   2              // Green light for 5 seconds
+  17   2              GREEN = 0;
+  18   2              YELLOW = 0;
+  19   2              RED = 1;
+  20   2              delay_ms(5000);
+  21   2              
+  22   2              // Yellow light for 2 seconds
+  23   2              GREEN = 0;
+  24   2              YELLOW = 1;
+  25   2              RED = 0;
+  26   2              delay_ms(2000);
+  27   2              
+  28   2              // Red light for 5 seconds
+  29   2              GREEN = 1;
+  30   2              YELLOW = 0;
+  31   2              RED = 0;
+  32   2              delay_ms(5000);
+  33   2          }
+  34   1      }
+  35          
+  36          void initialize() {
+  37   1          // Initialize all lights to off
+  38   1          RED = 0;
+  39   1          YELLOW = 0;
+  40   1          GREEN = 0;
+  41   1      }
+  42          
+  43          void delay_ms(unsigned int ms) {
+  44   1          unsigned int i, j;
+  45   1          for(i = 0; i < ms; i++)
+  46   1              for(j = 0; j < 123; j++); // Adjust this value based on your microcontroller's clock speed
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     83    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   TRFFIC_C                                                          07/18/2024 17:25:41 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
